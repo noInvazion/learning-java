@@ -31,6 +31,7 @@ public class CountOccurenceOfNumbers {
 
         sortArray(numArray);
         displayArray(numArray);
+        determineOccurrence(numArray);
     }
 
     public static void displayArray(int[] array) {
@@ -40,8 +41,6 @@ public class CountOccurenceOfNumbers {
     }
 
     public static void sortArray(int[] array){
-//        int[] arrangedArray = new int[array.length];
-
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - 1; j++) {
                 if (array[j] > array[j + 1] && array[j] != 0) {
@@ -53,27 +52,27 @@ public class CountOccurenceOfNumbers {
         }
     }
 
+    public static void determineOccurrence(int[] array){
+//        0, 1, 2, 3, 5, 7, 7, 10
 
-    public static void analyzeArray(int[] array){
-        int num = array[0];
-        int min;
-//        for (int i = 0; i < 100; i++) {
-        for (int i = 1; i < array.length; i++) {
-            if (num > array[i]){
-                min = array[i];
-            } else {
-                min = num;
+        for (int i = 0; i < array.length; i++) {
+            int counter = 1;
+            int checkNum = array[i];
+
+            if (checkNum == 0 && checkNum == array[i - 1]){
+                continue;
             }
+
+            for (int j = i + 1; j < array.length; j++) {
+                if (checkNum == array[j]){
+                    counter++;
+                }
+            }
+            System.out.printf("%d occurs %d times.\n", checkNum, counter);
         }
     }
 
     public static void main(String[] args) {
         generateArray();
-
-
-
-
-
-
     }
 }
